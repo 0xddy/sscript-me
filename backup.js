@@ -16,7 +16,7 @@ const backupOption = {
     db_user: '用户名',
     db_password: '密码',
     backUpPath: '/db',        // FTP 备份保存路径
-    backInterval: '18000000'  // 5个小时执行一次
+    backInterval: 18000000  // 5个小时执行一次
 }
 
 Client.prototype.cwdSync = function (path) {
@@ -42,7 +42,7 @@ function connectFtp(ftpOptions) {
         c.on('ready', () => {
             resolve({e: null, ftpClient: c})
         });
-        c.on('error', (error) => {
+        c.on('error', (e) => {
             resolve({e, ftpClient: null})
         })
         c.connect(ftpOptions)
